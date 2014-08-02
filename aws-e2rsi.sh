@@ -7,13 +7,13 @@ cd "${script_dir_path}"
 . ./config.sh
 
 aws ec2 request-spot-instances \
-	--spot-price 0.012 \
+	--spot-price "${aws_spot_price}" \
 	--launch-specification """
 	{
 		\"ImageId\": \"${aws_image_id}\",
 		\"KeyName\": \"${aws_key}\",
 		\"InstanceType\": \"${aws_instance_type_m3_medium}\",
-		\"SecurityGroups\": [ \"${aws_security_group}\" ]
+		\"SecurityGroups\": [\"${aws_security_group}\"]
 	}
 """ \
 ;
