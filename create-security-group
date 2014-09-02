@@ -1,0 +1,8 @@
+#!/bin/bash -u
+
+. ./config.sh
+
+aws ec2 create-security-group $@ \
+	--group-name ${aws_security_group} \
+	--description "$(echo ${aws_security_group}| sed 's/_/ /g')" \
+	| jq ".GroupId"| sed 's/^"\|"$//g'| tee .config/security_group_id

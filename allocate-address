@@ -1,0 +1,6 @@
+#!/bin/bash -u
+
+. ./config.sh
+
+aws ec2 allocate-address $@ \
+	| jq ".PublicIp"| sed 's/^"\|"$//g'| tee .config/public_ip

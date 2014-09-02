@@ -1,0 +1,16 @@
+#!/bin/bash -u
+
+. ./config.sh
+
+file=$HOME/.ssh/"${aws_key}".rsa
+if [[ -f ${file} ]]; then
+	echo "file is exists."
+	exit 1
+fi
+
+ssh-keygen -t rsa -f $HOME/.ssh/"${aws_key}".rsa
+chmod 600 $HOME/.ssh/"${aws_key}".rsa*
+
+aws ec2 import-key-pair $@ \
+	--key-name ${aws_key} \
+	--public-key-material "$(cat $HOME/.ssh/"${aws_key}".rsa.pub)"

@@ -1,0 +1,9 @@
+#!/bin/bash -u
+
+. ./config.sh
+
+# aws ec2 associate-address $@ \
+	# --instance-id ${instance_id} \
+	# --public-ip ${ip}  \
+aws ec2 associate-address $@ \
+	| jq ".return"| sed 's/^"\|"$//g'
