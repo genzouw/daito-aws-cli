@@ -13,7 +13,7 @@ aws ec2 request-spot-instances \
 		\"ImageId\": \"${aws_image_id}\",
 		\"KeyName\": \"${aws_key}\",
 		\"InstanceType\": \"${aws_instance_type_m3_medium}\",
-		\"SecurityGroups\": [ \"${aws_security_group}\" ]
+		\"SecurityGroups\": [\"${aws_security_group}\"]
 	}
 """ \
 ;
