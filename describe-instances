@@ -1,0 +1,4 @@
+#!/bin/bash -u
+set -e
+
+aws ec2 describe-instances
