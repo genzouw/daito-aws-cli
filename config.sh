@@ -6,7 +6,7 @@ aws_security_group="aws_${aws_account}_security_group"
 
 # amazon linux
 aws_region="ap-northeast-1"
-aws_spot_price="0.011"
+aws_spot_price="0.013"
 aws_image_id="ami-81294380"
 
 ## windows
